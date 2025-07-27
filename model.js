@@ -38,27 +38,19 @@ class Tweeter {
 
   constructor() {
     this.#posts = [
-      {
-        text: "First post!",
-        id: "p1",
-        comments: [
-          { id: "c1", text: "First comment on first post!" },
-          { id: "c2", text: "Second comment on first post!!" },
-          { id: "c3", text: "Third comment on first post!!!" },
-        ],
-      },
-      {
-        text: "Aw man, I wanted to be first",
-        id: "p2",
-        comments: [
-          {
-            id: "c4",
-            text: "Don't worry second poster, you'll be first one day.",
-          },
-          { id: "c5", text: "Yeah, believe in yourself!" },
-          { id: "c6", text: "Haha second place what a joke." },
-        ],
-      },
+      new Post("p1", "First post!", [
+        new Comment("c1", "First comment on first post!"),
+        new Comment("c2", "Second comment on first post!!"),
+        new Comment("c3", "Third comment on first post!!!"),
+      ]),
+      new Post("p2", "Aw man, I wanted to be first", [
+        new Comment(
+          "c4",
+          "Don't worry second poster, you'll be first one day."
+        ),
+        new Comment("c5", "Yeah, believe in yourself!"),
+        new Comment("c6", "Haha second place what a joke."),
+      ]),
     ];
     this.#postIdCounter = 2;
     this.#commentIdCounter = 6;
@@ -111,9 +103,10 @@ class Tweeter {
       return false;
     }
 
-    const comments = post.comments;
-    if (comments.some((comment) => comment.id === commentID)) {
-      comments = comments.filter((comment) => comment.id !== commentID);
+    if (post.comments.some((comment) => comment.id === commentID)) {
+      post.comments = post.comments.filter(
+        (comment) => comment.id !== commentID
+      );
       return true;
     }
     return false;
@@ -123,3 +116,5 @@ class Tweeter {
 // note: turns out there is a recursive structure we can use to clean up the code:
 // posts is an array, and comments is an array.
 // we can use two fns: findElement, and removeElement to cut down the code complexity
+
+export default Tweeter;
