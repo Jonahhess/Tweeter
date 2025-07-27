@@ -21,7 +21,8 @@ class Post {
     }
     if (
       comments &&
-      (!Array.isArray(comments) || !comments.every((c) => c instanceof Comment))
+      (!Array.isArray(comments) ||
+        comments.some((c) => !(c instanceof Comment)))
     ) {
       throw new Error("comments not valid. cannot construct post");
     }
