@@ -1,0 +1,9 @@
+#posts {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.post-container {
+  background-color: antiquewhite;
+  width: fit-content;
+}
