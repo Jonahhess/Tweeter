@@ -13,11 +13,9 @@ const renderComments = (comments) => {
 
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("data-id", element.id);
-    div.setAttribute("class", "comment-container");
+    deleteButton.setAttribute("class", "comment-delete-button");
     deleteButton.textContent = `Delete Comment ${element.id}`;
 
-    // delete comment
-    deleteButton.onclick = () => {};
     div.appendChild(deleteButton);
 
     ul.appendChild(div);
@@ -38,6 +36,7 @@ const renderPost = (element) => {
 
   const deleteButton = document.createElement("button");
   deleteButton.setAttribute("data-id", element.id);
+  deleteButton.setAttribute("class", "post-delete-button");
   deleteButton.textContent = `Delete Post ${element.id}`;
   div.appendChild(deleteButton);
 
@@ -65,12 +64,11 @@ const renderPost = (element) => {
     addCommentContainer.appendChild(input);
 
     const submitButton = document.createElement("button");
-    submitButton.setAttribute("id", `submit-btn-${element.id}`);
-    submitButton.setAttribute("data-ui", element.id);
+    submitButton.setAttribute("id", `submit-button-${element.id}`);
+    submitButton.setAttribute("class", "comment-submit-button");
+    submitButton.setAttribute("data-id", element.id);
     submitButton.innerText = "Submit";
 
-    // submit commetn on post
-    submitButton.onclick = () => {};
     addCommentContainer.appendChild(submitButton);
 
     div.appendChild(addCommentContainer);
@@ -112,7 +110,7 @@ const renderPosts = (posts) => {
   inputDiv.appendChild(input);
 
   const submitButton = document.createElement("button");
-  submitButton.setAttribute("id", "submit-btn");
+  submitButton.setAttribute("class", "post-submit-button");
   submitButton.innerText = "Submit";
   inputDiv.appendChild(submitButton);
 
